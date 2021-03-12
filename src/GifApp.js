@@ -1,25 +1,24 @@
 import React, { useState } from 'react'
+import { AddCategory } from './components/AddCategory';
+import { GifGrid } from './components/GifGrid';
 
 export const GifApp = () => {
 
-    // const categories = ['Correr', 'Nadar', 'Bucear'];
-    const [categories, setCategories] = useState(['Correr', 'Nadar', 'Bucear']);
-
-    const handleAdd = () => {
-        setCategories( [...categories, 'Caminata'] );
-    }
+    const [categories, setCategories] = useState(['Correr']);
     
     return (
         <div>
             <h2>GifApplication</h2>
+            <AddCategory setCategories={ setCategories }/>
             <hr />
-
-            <button onClick= { handleAdd }> Agregar </button>
 
             <ol>
                 { 
                     categories.map( (categoria, i) => {
-                        return <li key={ categoria }> { categoria } </li>;
+                        return <GifGrid 
+                                    key={ categoria }
+                                    category={ categoria }
+                                />;
                     } )
                 }
             </ol>
